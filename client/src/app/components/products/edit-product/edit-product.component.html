@@ -1,0 +1,31 @@
+<div *ngIf="product">
+    <a class="tw-flex tw-justify-start tw-items-center tw-gap-1 tw-mb-10" routerLink="/products/{{ product.id }}">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+        <span>Back</span>
+    </a>
+    
+    <div class="alert alert-success" role="alert" *ngIf="successMsg">{{successMsg}}</div>
+    <div class="alert alert-danger" role="alert" *ngIf="errorMsg">{{errorMsg}}</div>
+    
+    <form [formGroup]="productsForm">
+        <h4 class="tw-mb-6 tw-font-bold tw-text-[18px]">EDIT PRODUCT</h4>
+        <div class="mb-3">
+          <label for="name" class="form-label">Product Name</label>
+          <input type="text" class="form-control" id="name" formControlName="name">
+        </div>
+        <div class="mb-3">
+          <label for="price" class="form-label">Price</label>
+          <input type="number" class="form-control" id="price" formControlName="price">
+        </div>
+        <div class="mb-3">
+          <label for="quantity" class="form-label">Quantity</label>
+          <input type="number" class="form-control" id="quantity" formControlName="quantity">
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" rows="3" formControlName="description"></textarea>
+        </div>
+        
+        <button type="button" (click)="submit()" class="btn btn-outline-success">Add</button>
+    </form>
+</div>

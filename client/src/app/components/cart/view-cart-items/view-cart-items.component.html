@@ -1,0 +1,30 @@
+<div *ngIf="cartItems">
+    <a class="tw-flex tw-justify-start tw-items-center tw-gap-1 tw-mb-10" routerLink="/cart">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+        <span>Back</span>
+    </a>
+
+    <h3 class="tw-font-bold tw-text-[18px] tw-mb-10">CART ITEMS</h3>
+
+    <div class="tw-flex tw-gap-6 tw-mb-8">
+        <span class="tw-font-bold tw-w-[200px]">Customer Name</span>
+        <span>{{ cartItems[0].customer_name }}</span>
+    </div>
+    <div *ngFor="let cartItem of cartItems; let i = index" class="tw-mb-10">
+        <div class="tw-mb-8">
+            <span class="tw-font-bold tw-w-[200px]">#{{ i+1 }}</span>
+        </div>
+        <div class="tw-flex tw-gap-6 tw-mb-8">
+            <span class="tw-font-bold tw-w-[200px]">Product Name</span>
+            <span>{{ cartItem.name }}</span>
+        </div>
+        <div class="tw-flex tw-gap-6 tw-mb-8">
+            <span class="tw-font-bold tw-w-[200px]">Price</span>
+            <span>{{ cartItem.price }}</span>
+        </div>
+        <div class="tw-flex tw-gap-6 tw-mb-8">
+            <span class="tw-font-bold tw-w-[200px]">Description</span>
+            <span>{{ cartItem.description }}</span>
+        </div>
+    </div>
+</div>

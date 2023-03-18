@@ -1,0 +1,26 @@
+<div class="tw-w-screen tw-h-screen tw-flex">
+  <!-- sidebar -->
+  <div class="tw-w-1/5 tw-h-screen tw-bg-white tw-drop-shadow-2xl tw-shadow">
+    <h3 class="tw-text-[26px] tw-text-center tw-font-bold tw-px-1 tw-py-6 tw-border-b tw-text-cyan-800">Inventory Mgt</h3>
+
+    <ul>
+      <li>
+        <a routerLink="/" routerLinkActive="tw-bg-cyan-50" [routerLinkActiveOptions]="{exact: true}" class="tw-block tw-px-2 tw-py-5 hover:tw-bg-cyan-50">Home</a>
+      </li>
+      <li>
+        <a routerLink="/products" routerLinkActive="tw-bg-cyan-50" class="tw-block tw-px-2 tw-py-5 hover:tw-bg-cyan-50">Products</a>
+      </li>
+      <li>
+        <a routerLink="/orders" routerLinkActive="tw-bg-cyan-50" class="tw-block tw-px-2 tw-py-5 hover:tw-bg-cyan-50">Orders</a>
+      </li>
+      <li>
+        <a routerLink="/cart" routerLinkActive="tw-bg-cyan-50" class="tw-block tw-px-2 tw-py-5 hover:tw-bg-cyan-50">Cart</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- content -->
+  <div class="tw-w-4/5 tw-p-10">
+    <router-outlet></router-outlet>
+  </div>
+</div>

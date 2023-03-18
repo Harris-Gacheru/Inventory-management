@@ -1,0 +1,37 @@
+<a class="tw-flex tw-justify-start tw-items-center tw-gap-1 tw-mb-10" routerLink="/products">
+    <ion-icon name="arrow-back-outline"></ion-icon>
+    <span>Back</span>
+</a>
+
+<div class="alert alert-success" role="alert" *ngIf="successMsg">{{successMsg}}</div>
+<div class="alert alert-danger" role="alert" *ngIf="errorMsg">{{errorMsg}}</div>
+
+<div *ngIf="product">
+    <h3 class="tw-font-bold tw-text-[18px] tw-mb-10">PRODUCT DETAILS</h3>
+    <div class="tw-flex tw-gap-6 tw-mb-8">
+        <span class="tw-font-bold tw-w-[120px]">Product Name</span>
+        <span>{{ product.name }}</span>
+    </div>
+    <div class="tw-flex tw-gap-6 tw-mb-8">
+        <span class="tw-font-bold tw-w-[120px]">Price</span>
+        <span>{{ product.price }}</span>
+    </div>
+    <div class="tw-flex tw-gap-6 tw-mb-8">
+        <span class="tw-font-bold tw-w-[120px]">Quantity</span>
+        <span>{{ product.quantity }}</span>
+    </div>
+    <div class="tw-flex tw-gap-6 tw-mb-8">
+        <span class="tw-font-bold tw-w-[120px]">Description</span>
+        <span>{{ product.description }}</span>
+    </div>
+    <div class="tw-flex tw-gap-6 tw-mb-8">
+        <span class="tw-font-bold tw-w-[120px]">Date Added</span>
+        <span>{{ product.date_added }}</span>
+    </div>
+
+    <div class="tw-flex tw-gap-4">
+        <a routerLink="/products/edit/{{ product.id }}" class="btn btn-success">Edit</a>
+        
+        <a role="button" (click)="delete(product.id)" class="btn btn-danger">Delete</a>
+    </div>
+</div>
