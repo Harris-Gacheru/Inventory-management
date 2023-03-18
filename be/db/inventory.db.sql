@@ -12,6 +12,9 @@ create table if not exists products(
     primary key(id)
 );
 
+INSERT INTO products(name, description, price, quantity) VALUES ('Bata ngoma', 'Classy shoes', 500, 15);
+INSERT INTO products(name, description, price, quantity) VALUES ('Vans', 'Off the wall', 1500, 15);
+
 create table if not exists orders(
 	id int not null auto_increment,
     customer_name varchar(100) not null,
@@ -28,6 +31,7 @@ create table if not exists order_items(
 	order_id int not null,
 	product_id int not null,
     quantity int not null,
+    isstock_updated int default 0 not null,
     primary key(id),
     foreign key(order_id) references orders(id),
     foreign key(product_id) references products(id)

@@ -39,7 +39,8 @@ export const getProduct = async(req, res) => {
         products.name,
         products.description,
         products.price,
-        products.quantity - (select sum(order_items.quantity) from order_items where order_items.product_id = products.id) as quantity, 
+        products.quantity - (select sum(order_items.quantity) from order_items where order_items.product_id = products.id and order_items.isstock_updated = 0) as instock, 
+        products.quantity as quantity, 
         products.date_added
     from products
     where products.id = '${id}'`, (error, results, fields) => {
@@ -63,7 +64,8 @@ export const getProducts = async(req, res) => {
         products.name,
         products.description,
         products.price,
-        products.quantity - (select sum(order_items.quantity) from order_items where order_items.product_id = products.id) as quantity, 
+        products.quantity - (select sum(order_items.quantity) from order_items where order_items.product_id = products.id and order_items.isstock_updated = 0) as instock, 
+        products.quantity as quantity,
         products.date_added
     from products`, (error, results, fields) => {
             if(error) return res.status(400).json({error: error})
@@ -93,7 +95,13 @@ export const updateProduct = async(req, res) => {
             if(error) return res.status(400).json({error: error})
             
             if (results.changedRows == 1) {
-                return res.status(200).json({message: 'Product updated successfully'})
+                dbConn.query(`update order_items set isstock_updated = 1 where product_id = ${id}`, (error, results, fields) => {
+                    if(error) return res.status(400).json({error: error})
+
+                    if (results.changedRows == 1) {
+                        return res.status(200).json({message: 'Product updated successfully'})                        
+                    }
+                })
             } else if(results.affectedRows == 1 && results.changedRows == 0){
                 return res.status(200).json({message: 'No changes were made'})
             } else {
