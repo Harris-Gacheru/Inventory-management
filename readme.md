@@ -4,9 +4,9 @@ This is a project to manage inventory and sale data.
 
 ## Technologies
 
-Frontend: Angular
-Backend: Nodejs
-DB: MySQL
+* Frontend: Angular
+* Backend: Nodejs
+* DB: MySQL
 
 ## Get started
 
