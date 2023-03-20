@@ -51,5 +51,5 @@ DB:
 cd be/db
 ```
 
-Import `inventory.db.sql` to your mysql/ xamppp.
-Create `.env` file and the environment variables to match the config file i.e `cd be\config\config.js`.
+Import `inventory.db.sql` to your mysql/ xamppp \
+Create `.env` file and the environment variables to match the config file i.e `cd be\config\config.js` \
